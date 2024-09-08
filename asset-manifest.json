@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/napa/static/css/main.84ea5e1e.css",
+    "main.js": "/napa/static/js/main.00cfc052.js",
+    "static/js/453.00bf1a74.chunk.js": "/napa/static/js/453.00bf1a74.chunk.js",
+    "static/media/demo.png": "/napa/static/media/demo.2e5fb5134404734a73ab.png",
+    "index.html": "/napa/index.html",
+    "main.84ea5e1e.css.map": "/napa/static/css/main.84ea5e1e.css.map",
+    "main.00cfc052.js.map": "/napa/static/js/main.00cfc052.js.map",
+    "453.00bf1a74.chunk.js.map": "/napa/static/js/453.00bf1a74.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84ea5e1e.css",
+    "static/js/main.00cfc052.js"
+  ]
+}
