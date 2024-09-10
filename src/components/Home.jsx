@@ -1,12 +1,17 @@
 import React from "react";
-import { Typography, Box, Card, CardContent } from "@mui/material";
+import { Typography, Box, Card, CardContent, Avatar } from "@mui/material";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { A11y, Autoplay, Navigation, Pagination, Scrollbar } from "swiper/modules";
-import Profile from "../images/demo.png";
+
+// Helper function to generate a random letter
+const getRandomLetter = () => {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    return letters[Math.floor(Math.random() * letters.length)];
+};
 
 const Home = () => {
     return (
@@ -40,18 +45,22 @@ const Home = () => {
                 <SwiperSlide>
                     <Card sx={{ bgcolor: 'transparent', boxShadow: 'none', height: 'auto', maxWidth: '100%' }}>
                         <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
-                            <img
-                                src={Profile}
-                                alt="Slide 1"
-                                style={{
-                                    width: '100%',
-                                    maxWidth: '800px', // Adjust this value to control the maximum width of the image
-                                    maxHeight: '500px', // Adjust this value to control the maximum height of the image
-                                    height: 'auto',
+                            <Avatar
+                                sx={{
+                                    width: 800,
+                                    height: 500,
                                     borderRadius: '8px',
-                                    objectFit: 'contain' // Use 'contain' to show the full image without cropping
+                                    backgroundColor: 'primary.main',
+                                    fontSize: '4rem',
+                                    color: 'white',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    objectFit: 'cover' // Ensure the content fits well within the specified dimensions
                                 }}
-                            />
+                            >
+                                {getRandomLetter()}
+                            </Avatar>
                             <Typography variant="h5" sx={{ mt: 2 }}>Slide 1 Title</Typography>
                             <Typography variant="body1" sx={{ mt: 1 }}>
                                 Description for slide 1. This is an example of a beautiful slide with overlay text.
@@ -62,18 +71,22 @@ const Home = () => {
                 <SwiperSlide>
                     <Card sx={{ bgcolor: 'transparent', boxShadow: 'none', height: 'auto', maxWidth: '100%' }}>
                         <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
-                            <img
-                                src={Profile}
-                                alt="Slide 2"
-                                style={{
-                                    width: '100%',
-                                    maxWidth: '800px', // Adjust this value to control the maximum width of the image
-                                    maxHeight: '500px', // Adjust this value to control the maximum height of the image
-                                    height: 'auto',
+                            <Avatar
+                                sx={{
+                                    width: 800,
+                                    height: 500,
                                     borderRadius: '8px',
-                                    objectFit: 'contain' // Use 'contain' to show the full image without cropping
+                                    backgroundColor: 'primary.main',
+                                    fontSize: '4rem',
+                                    color: 'white',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    objectFit: 'cover'
                                 }}
-                            />
+                            >
+                                {getRandomLetter()}
+                            </Avatar>
                             <Typography variant="h5" sx={{ mt: 2 }}>Slide 2 Title</Typography>
                             <Typography variant="body1" sx={{ mt: 1 }}>
                                 Description for slide 2. This is another example with different styling and content.
@@ -84,18 +97,22 @@ const Home = () => {
                 <SwiperSlide>
                     <Card sx={{ bgcolor: 'transparent', boxShadow: 'none', height: 'auto', maxWidth: '100%' }}>
                         <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
-                            <img
-                                src={Profile}
-                                alt="Slide 3"
-                                style={{
-                                    width: '100%',
-                                    maxWidth: '800px', // Adjust this value to control the maximum width of the image
-                                    maxHeight: '500px', // Adjust this value to control the maximum height of the image
-                                    height: 'auto',
+                            <Avatar
+                                sx={{
+                                    width: 800,
+                                    height: 500,
                                     borderRadius: '8px',
-                                    objectFit: 'contain' // Use 'contain' to show the full image without cropping
+                                    backgroundColor: 'primary.main',
+                                    fontSize: '4rem',
+                                    color: 'white',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    objectFit: 'cover'
                                 }}
-                            />
+                            >
+                                {getRandomLetter()}
+                            </Avatar>
                             <Typography variant="h5" sx={{ mt: 2 }}>Slide 3 Title</Typography>
                             <Typography variant="body1" sx={{ mt: 1 }}>
                                 Description for slide 3. Here you can provide additional details or a call-to-action.

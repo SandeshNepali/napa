@@ -1,106 +1,114 @@
 import React from 'react';
-import SignUp from './SignUp';
-import { Box, Typography, Button, TextField, Grid, List, ListItem } from '@mui/material';
+import { Container, Grid, Typography, TextField, Button, Paper, Box, Divider } from '@mui/material';
+import { Send as SendIcon } from '@mui/icons-material';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS for proper rendering
 
-const Contact = () => {
+const center = [37.7749, -122.4194]; // Replace with your latitude and longitude
+
+const ContactPage = () => {
     return (
-        <>
-            <SignUp />
-            <Box sx={{ backgroundColor: 'grey.200', py: 5 }}>
-                <Box sx={{ p: 5, backgroundColor: 'grey.800', color: 'grey.200' }}>
-                    <Box sx={{ maxWidth: 'lg', mx: 'auto' }}>
-                        <Grid container spacing={2}>
-                            {/* NAPA Association Section */}
-                            <Grid item xs={12} md={6} lg={3}>
-                                <Typography variant="h5" component="h4" sx={{ pb: 2 }}>
-                                    NAPA Association
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    <Box component="span" display="block" mb={1}>Berkeley</Box>
-                                    <Box component="span" display="block" mb={1}>California, 94704</Box>
-                                    <Box component="span" display="block" mb={1}><strong>Technical Support:</strong> sandeshnepali57@gmail.com</Box>
-                                    <Box component="span" display="block" mb={1}><strong>Email:</strong> napafamily2020@gmail.com</Box>
-                                </Typography>
-                            </Grid>
-
-                            {/* Useful Links Section */}
-                            <Grid item xs={12} md={6} lg={3}>
-                                <Typography variant="h5" component="h4" sx={{ pb: 2 }}>
-                                    Useful Links
-                                </Typography>
-                                <List>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>Home</Typography>
-                                    </ListItem>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>About Us</Typography>
-                                    </ListItem>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>Service</Typography>
-                                    </ListItem>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>Terms of Services</Typography>
-                                    </ListItem>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>Privacy Policy</Typography>
-                                    </ListItem>
-                                </List>
-                            </Grid>
-
-                            {/* Our Services Section */}
-                            <Grid item xs={12} md={6} lg={3}>
-                                <Typography variant="h5" component="h4" sx={{ pb: 2 }}>
-                                    Our Services
-                                </Typography>
-                                <List>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>Home</Typography>
-                                    </ListItem>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>About Us</Typography>
-                                    </ListItem>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>Service</Typography>
-                                    </ListItem>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>Terms of Services</Typography>
-                                    </ListItem>
-                                    <ListItem disablePadding>
-                                        <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>Privacy Policy</Typography>
-                                    </ListItem>
-                                </List>
-                            </Grid>
-
-                            {/* Stay Connected Section */}
-                            <Grid item xs={12} md={6} lg={3}>
-                                <Typography variant="h5" component="h4" sx={{ pb: 2 }}>
-                                    Stay Connected with Us
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary" sx={{ pb: 2, mb: 3 }}>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum, dolor.
-                                </Typography>
-                                <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
-                                    <TextField
-                                        variant="outlined"
-                                        placeholder="Enter your email address"
-                                        sx={{ flex: '1 1 66%', mr: 1, mb: 2, backgroundColor: 'white' }}
-                                    />
-                                    <Button
-                                        type="submit"
-                                        variant="contained"
-                                        color="primary"
-                                        sx={{ flex: '1 1 33%', mb: 2 }}
-                                    >
-                                        Submit
-                                    </Button>
-                                </Box>
-                            </Grid>
-                        </Grid>
-                    </Box>
-                </Box>
-            </Box>
-        </>
+        <Container maxWidth="lg" sx={{ padding: '2rem' }}>
+            <Typography variant="h3" align="center" gutterBottom sx={{ marginBottom: '1.5rem' }}>
+                Contact Us
+            </Typography>
+            <Grid container spacing={4}>
+                <Grid item xs={12} md={6}>
+                    <Paper elevation={6} sx={{ padding: '2rem', borderRadius: '12px', boxShadow: 3 }}>
+                        <Typography variant="h5" gutterBottom>
+                            We'd Love to Hear From You
+                        </Typography>
+                        <Divider sx={{ marginBottom: '1rem' }} />
+                        <Box component="form" noValidate autoComplete="off">
+                            <TextField
+                                fullWidth
+                                label="Name"
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                sx={{ marginBottom: '1rem' }}
+                            />
+                            <TextField
+                                fullWidth
+                                label="Email"
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                type="email"
+                                sx={{ marginBottom: '1rem' }}
+                            />
+                            <TextField
+                                fullWidth
+                                label="Subject"
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                sx={{ marginBottom: '1rem' }}
+                            />
+                            <TextField
+                                fullWidth
+                                label="Message"
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                multiline
+                                rows={4}
+                                sx={{ marginBottom: '1rem' }}
+                            />
+                            <Box textAlign="center">
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    size="large"
+                                    endIcon={<SendIcon />}
+                                    sx={{ borderRadius: '20px' }}
+                                >
+                                    Send Message
+                                </Button>
+                            </Box>
+                        </Box>
+                    </Paper>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Paper elevation={6} sx={{ padding: '2rem', borderRadius: '12px', boxShadow: 3 }}>
+                        <Typography variant="h5" gutterBottom>
+                            Our Location
+                        </Typography>
+                        <Divider sx={{ marginBottom: '1rem' }} />
+                        <MapContainer
+                            center={center}
+                            zoom={12}
+                            style={{ height: '400px', width: '100%' }}
+                        >
+                            <TileLayer
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                attribution='© OpenStreetMap contributors'
+                            />
+                            <Marker position={center}>
+                                <Popup>
+                                    Our office is located here.
+                                </Popup>
+                            </Marker>
+                        </MapContainer>
+                        <Box sx={{ marginTop: '1rem' }}>
+                            <Typography variant="body1" sx={{ marginBottom: '0.5rem' }}>
+                                123 Main Street
+                                <br />
+                                Suite 400
+                                <br />
+                                Anytown, USA 12345
+                            </Typography>
+                            <Typography variant="body1">
+                                Phone: (123) 456-7890
+                                <br />
+                                Email: contact@yourcompany.com
+                            </Typography>
+                        </Box>
+                    </Paper>
+                </Grid>
+            </Grid>
+        </Container>
     );
 };
 
-export default Contact;
+export default ContactPage;

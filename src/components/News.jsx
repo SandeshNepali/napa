@@ -34,17 +34,24 @@ const News = () => {
         <Box sx={{ width: '90%', mx: 'auto', my: 6 }}>
             {/* Breaking News Section */}
             <Box sx={{ mb: 6 }}>
-                <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold' }}>
+                <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', mb: 4 }}>
                     Breaking News
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 5, flexDirection: { xs: 'column', md: 'row' } }}>
                     <Avatar
-                        sx={{ width: 300, height: 200, mr: { md: 3 }, mb: { xs: 3, md: 0 } }}
+                        sx={{
+                            width: 300,
+                            height: 200,
+                            mr: { md: 3 },
+                            mb: { xs: 3, md: 0 },
+                            boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                            borderRadius: 2,
+                        }}
                         src="https://association-webpage.sajannepali.repl.co/images/news1.webp"
                         alt="Breaking News"
                     />
                     <Box>
-                        <Typography variant="h6" component="h2">
+                        <Typography variant="h6" component="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
                             <a
                                 href="https://www.npr.org/2020/10/12/922936053/california-workplace-discrimination-system-sheds-light-on-caste-system"
                                 target="_blank"
@@ -54,7 +61,7 @@ const News = () => {
                                 California Workplace Discrimination System Sheds Light On Caste System
                             </a>
                         </Typography>
-                        <Typography variant="body2" sx={{ mt: 2, opacity: 0.7 }}>
+                        <Typography variant="body2" sx={{ mt: 1, color: 'text.secondary' }}>
                             This summer, a tech worker filed a workplace discrimination lawsuit in California. The remarkable thing is that the lawsuit isn't about sexual{" "}
                             <a
                                 href="https://www.npr.org/2020/10/12/922936053/california-workplace-discrimination-system-sheds-light-on-caste-system"
@@ -69,23 +76,43 @@ const News = () => {
                 </Box>
             </Box>
 
+            <Divider variant="middle" sx={{ my: 6 }} />
+
             {/* Top Headlines Section */}
             <Box>
-                <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold' }}>
+                <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold', mb: 4 }}>
                     Top Headlines
                 </Typography>
                 <Box sx={{ maxHeight: 500, overflowY: 'auto' }}>
                     {topHeadlines.map((item, index) => (
                         <Box
                             key={index}
-                            sx={{ display: 'flex', alignItems: 'center', mb: 3, p: 2, border: '1px solid #ddd', borderRadius: 1 }}
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                mb: 3,
+                                p: 2,
+                                border: '1px solid #ddd',
+                                borderRadius: 2,
+                                transition: 'box-shadow 0.3s ease',
+                                '&:hover': {
+                                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                                },
+                            }}
                         >
                             <Avatar
-                                sx={{ width: 100, height: 100, mr: 2, fontSize: '2rem', bgcolor: '#1976d2', color: '#fff' }}
+                                sx={{
+                                    width: 80,
+                                    height: 80,
+                                    mr: 2,
+                                    fontSize: '2rem',
+                                    bgcolor: '#1976d2',
+                                    color: '#fff',
+                                }}
                             >
                                 {item.avatarText}
                             </Avatar>
-                            <Typography variant="body1">
+                            <Typography variant="body1" sx={{ fontWeight: 'bold', lineHeight: '1.5' }}>
                                 <a
                                     href={item.link}
                                     target="_blank"

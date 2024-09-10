@@ -1,188 +1,163 @@
 import React, { useState } from "react";
-import { Box, Typography, Button, List, ListItem, Divider } from "@mui/material";
+import {
+    Box,
+    Typography,
+    Button,
+    List,
+    ListItem,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TablePagination,
+    Paper,
+    useTheme
+} from "@mui/material";
 
 const About = () => {
     const [data, setData] = useState(false);
-    const toggleList = () => setData(!data);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const theme = useTheme();
+
+    const members = [
+        "Sandesh Nepali", "Kaji Sunam Darji", "Krishna Sonam", "Dimpal Pariyar", "Sapana Pariyar",
+        "Laxmi Tikhatri", "Sagar Kumar Darnal", "Bishwanath Darnal", "Kajiman Siwa", "Binod Darji",
+        "Sapna Pariyar", "Saraswati Pariyar", "Shanta Pariyar", "Shanti Sunam", "Shekhar Raj Mote",
+        "Shristhi Shahi", "Siddhanta Pariyar", "Pradipta Pariyar", "Provin Pariyar", "Pushpa Damai",
+        "Rabin Shiwa", "Raj Kapoor", "Raju Mothey", "Ram Sharan Pariyar", "Ramesh Razz Romiyo",
+        "Rekha Pariyar", "Roji Karki Bagdas", "Rosna Pariyar", "S Ru Xinal", "Saa Nuu Nepali",
+        "Sagar Darnal", "Samira Siwa", "Sammy Sanroji", "Sangita Hingmang", "Sanjayalal Sundas",
+        "Santosh Lakher", "Santosh Nepali", "Kumar Darnal", "Laxmi Pariyar", "Laxmi Tikhatri",
+        "Mameeta Santosh", "Manish Sunam", "Mina Vitrakoti", "Narayan Pariyar", "Narendra Pyasi",
+        "Dilipkumar Nepali", "Om Adhikari", "Prakash Pariyar", "Pradeep Pariyar Thapa", "Nirmal Jairu",
+        "Binod Shahi", "Bishnu Maya Pariyar", "Bishwanth Darnal", "Deepak Pariyar", "Dhruba Kumar Pariyar",
+        "Dimple Pariyar", "Dipak Nepali", "Gautam Manisha", "Govind Ram Pariyar", "Indira Sunam Jay",
+        "Kumar Pariyar", "Kaji Sunam", "Kamal Pariyar Babul", "Kanhaiya Singh Pariyar", "Karna Sunam Akela",
+        "Kiran Pariyar"
+    ];
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
+
+    // Determine current rows to display
+    const paginatedMembers = members.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
     return (
-        <Box sx={{ width: '85%', mx: 'auto', my: 4 }}>
-
+        <Box sx={{ width: '90%', maxWidth: 1200, mx: 'auto', my: 6, px: 2 }}>
             {/* About Us Section */}
             <Box sx={{ mb: 6 }}>
-                <Typography variant="h4" component="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
+                <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 3 }}>
                     About Us
                 </Typography>
-                <Typography variant="body1" sx={{ textIndent: 2, mb: 4 }}>
-                    NAPA is a non-profit community organization. It was formally
-                    established in 2020 in the United States of America. Aiming to unify
-                    scattered brothers and sisters together, it will work for community
-                    upliftment. The mission of the organization shall be to preserve
-                    Nepali identity by promoting Nepali cultural and social events
-                    through the cooperation of Nepalese and American communities, to
-                    foster closer contacts among Pariyar individuals, families, and
-                    friends in the United States and in Nepal, to provide financial and
-                    non-financial support to Nepalese in need, and to explore and build
-                    a cooperative relationship for mutual benefits and advancement with
-                    other world citizens and associations.
+                <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.6 }}>
+                    NAPA is a non-profit community organization established in 2020 in the USA.
+                    Our mission is to preserve Nepali identity by promoting cultural and social events,
+                    foster closer contacts among Pariyar individuals, provide support to Nepalese in need,
+                    and build cooperative relationships globally.
                 </Typography>
             </Box>
 
             {/* Principal Activities Section */}
             <Box sx={{ mb: 6 }}>
-                <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold', textDecoration: 'underline', mb: 2 }}>
+                <Typography variant="h4" component="h3" sx={{ fontWeight: 'bold', mb: 2 }}>
                     Principal Activities
                 </Typography>
-                <List>
-                    <ListItem>To promote close cooperation among Pariyar Community in the USA.</ListItem>
-                    <ListItem>To preserve and promote Nepalese Pariyar identity and culture.</ListItem>
-                    <ListItem>To contribute to the overall well-being of Nepalese Pariyar communities in the USA and Nepal.</ListItem>
-                    <ListItem>To promote social and charitable activities to help Nepalese Pariyar communities in the USA and Nepal.</ListItem>
+                <List sx={{ pl: 2 }}>
+                    <ListItem sx={{ mb: 1 }}>Promote cooperation among the Pariyar community in the USA.</ListItem>
+                    <ListItem sx={{ mb: 1 }}>Preserve and promote Nepalese Pariyar identity and culture.</ListItem>
+                    <ListItem sx={{ mb: 1 }}>Contribute to the well-being of Nepalese Pariyar communities in the USA and Nepal.</ListItem>
+                    <ListItem>Promote social and charitable activities for the Pariyar communities.</ListItem>
                 </List>
             </Box>
 
             {/* Members Section */}
-            <Box sx={{ mb: 4 }}>
-                <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold', textAlign: { xs: 'center', md: 'left' }, mb: 2 }}>
+            <Box>
+                <Typography variant="h4" component="h3" sx={{ fontWeight: 'bold', mb: 4 }}>
                     Members of Nepalese-American Pariyar Association
                 </Typography>
 
                 {/* Executive Committee */}
-                <Box sx={{ mb: 3 }}>
-                    <Typography variant="h6" component="h3" sx={{ fontWeight: 'bold' }}>
-                        Executive Committee and Members
+                <Box sx={{ mb: 4 }}>
+                    <Typography variant="h5" component="h4" sx={{ fontWeight: 'bold', mb: 2 }}>
+                        Executive Committee
                     </Typography>
                     <Box sx={{ mb: 2 }}>
-                        <Typography variant="body1">
-                            <strong>President:</strong> Saroj Pariyar
-                        </Typography>
-                        <Typography variant="body1">
-                            <strong>Vice President:</strong> Lal Bahadur Sundas
-                        </Typography>
-                        <Typography variant="body1">
-                            <strong>General Secretary:</strong> Om Bahadur Adhikari
-                        </Typography>
-                        <Typography variant="body1">
-                            <strong>Secretary:</strong> Surya Bahadur Sunam
-                        </Typography>
-                        <Typography variant="body1">
-                            <strong>Treasurer:</strong> Bharat Pariyar
-                        </Typography>
+                        <Typography variant="body1" sx={{ mb: 1 }}><strong>President:</strong> Saroj Pariyar</Typography>
+                        <Typography variant="body1" sx={{ mb: 1 }}><strong>Vice President:</strong> Lal Bahadur Sundas</Typography>
+                        <Typography variant="body1" sx={{ mb: 1 }}><strong>General Secretary:</strong> Om Bahadur Adhikari</Typography>
+                        <Typography variant="body1" sx={{ mb: 1 }}><strong>Secretary:</strong> Surya Bahadur Sunam</Typography>
+                        <Typography variant="body1"><strong>Treasurer:</strong> Bharat Pariyar</Typography>
                     </Box>
                 </Box>
 
                 {/* Advisory Board */}
-                <Box sx={{ mb: 3 }}>
-                    <Typography variant="h6" component="h3" sx={{ fontWeight: 'bold' }}>
+                <Box sx={{ mb: 4 }}>
+                    <Typography variant="h5" component="h4" sx={{ fontWeight: 'bold', mb: 2 }}>
                         Advisory Board
                     </Typography>
-                    <List>
-                        <ListItem>Prem Pariyar</ListItem>
-                        <ListItem>Dr. Bishnu Maya Nepali</ListItem>
-                        <ListItem>Bhadraman Mote</ListItem>
-                        <ListItem>Mamita Nepali</ListItem>
-                        <ListItem>Dilip Nepali</ListItem>
+                    <List sx={{ pl: 2 }}>
+                        <ListItem sx={{ mb: 1 }}>Prem Pariyar</ListItem>
+                        <ListItem sx={{ mb: 1 }}>Dr. Bishnu Maya Nepali</ListItem>
+                        <ListItem sx={{ mb: 1 }}>Bhadraman Mote</ListItem>
+                        <ListItem sx={{ mb: 1 }}>Mamita Nepali</ListItem>
+                        <ListItem>Sushil Nepali</ListItem>
                     </List>
                 </Box>
 
                 {/* Technical Advisor */}
-                <Box sx={{ mb: 3 }}>
-                    <Typography variant="h6" component="h3" sx={{ fontWeight: 'bold' }}>
+                <Box sx={{ mb: 4 }}>
+                    <Typography variant="h5" component="h4" sx={{ fontWeight: 'bold', mb: 2 }}>
                         Technical Advisor
                     </Typography>
-                    <List>
-                        <ListItem>Sandesh Nepali</ListItem>
+                    <List sx={{ pl: 2 }}>
+                        <ListItem sx={{ mb: 1 }}>Sandesh Nepali</ListItem>
                         <ListItem>Ram Krishna Pariyar</ListItem>
                     </List>
                 </Box>
 
-                {/* Board Members */}
-                <Box sx={{ mb: 3 }}>
-                    <Typography variant="h6" component="h3" sx={{ fontWeight: 'bold' }}>
+                {/* Board Members Table */}
+                <Box>
+                    <Typography variant="h5" component="h4" sx={{ fontWeight: 'bold', mb: 2 }}>
                         Board Members
                     </Typography>
-                    <List>
-                        <ListItem>Sandesh Nepali</ListItem>
-                        <ListItem>Kaji Sunam Darji</ListItem>
-                        <ListItem>Krishna Sonam</ListItem>
-                        <ListItem>Dimpal Pariyar</ListItem>
-                        <ListItem>Sapana Pariyar</ListItem>
-                        <ListItem>Laxmi Tikhatri</ListItem>
-                        <ListItem>Sagar Kumar Darnal</ListItem>
-                        <ListItem>Bishwanath Darnal</ListItem>
-                        <ListItem>Kajiman Siwa</ListItem>
-                        <ListItem>Binod Darji</ListItem>
-                    </List>
-                    {/* Toggle List */}
-                    <Button
-                        onClick={toggleList}
-                        sx={{ mt: 2, bgcolor: 'grey.500', color: 'blue.200', '&:hover': { bgcolor: 'grey.600' } }}
-                    >
-                        {data ? "Hide Members" : "View the List of All Members Below"}
-                    </Button>
-                    {/* Detailed List */}
-                    <List sx={{ display: data ? 'block' : 'none', mt: 2 }}>
-                        <ListItem>Sapna Pariyar</ListItem>
-                        <ListItem>Saraswati Pariyar</ListItem>
-                        <ListItem>Shanta Pariyar</ListItem>
-                        <ListItem>Shanti Sunam</ListItem>
-                        <ListItem>Shekhar Raj Mote</ListItem>
-                        <ListItem>Shristhi Shahi</ListItem>
-                        <ListItem>Siddhanta Pariyar</ListItem>
-                        <ListItem>Pradipta Pariyar</ListItem>
-                        <ListItem>Provin Pariyar</ListItem>
-                        <ListItem>Pushpa Damai</ListItem>
-                        <ListItem>Rabin Shiwa</ListItem>
-                        <ListItem>Raj Kapoor</ListItem>
-                        <ListItem>Raju Mothey</ListItem>
-                        <ListItem>Ram Sharan Pariyar</ListItem>
-                        <ListItem>Ramesh Razz Romiyo</ListItem>
-                        <ListItem>Rekha Pariyar</ListItem>
-                        <ListItem>Roji Karki Bagdas</ListItem>
-                        <ListItem>Rosna Pariyar</ListItem>
-                        <ListItem>S Ru Xinal</ListItem>
-                        <ListItem>Saa Nuu Nepali</ListItem>
-                        <ListItem>Sagar Darnal</ListItem>
-                        <ListItem>Samira Siwa</ListItem>
-                        <ListItem>Sammy Sanroji</ListItem>
-                        <ListItem>Sangita Hingmang</ListItem>
-                        <ListItem>Sanjayalal Sundas</ListItem>
-                        <ListItem>Santosh Lakher</ListItem>
-                        <ListItem>Santosh Nepali</ListItem>
-                        <ListItem>Kumar Darnal</ListItem>
-                        <ListItem>Laxmi Pariyar</ListItem>
-                        <ListItem>Laxmi Tikhatri</ListItem>
-                        <ListItem>Mameeta Santosh</ListItem>
-                        <ListItem>Manish Sunam</ListItem>
-                        <ListItem>Mina Vitrakoti</ListItem>
-                        <ListItem>Narayan Pariyar</ListItem>
-                        <ListItem>Narendra Pyasi</ListItem>
-                        <ListItem>Dilipkumar Nepali</ListItem>
-                        <ListItem>Om Adhikari</ListItem>
-                        <ListItem>Prakash Pariyar</ListItem>
-                        <ListItem>Pradeep Pariyar Thapa</ListItem>
-                        <ListItem>Nirmal Jairu</ListItem>
-                        <ListItem>Binod Shahi</ListItem>
-                        <ListItem>Bishnu Maya Pariyar</ListItem>
-                        <ListItem>Bishwanth Darnal</ListItem>
-                        <ListItem>Deepak Pariyar</ListItem>
-                        <ListItem>Dhruba Kumar Pariyar</ListItem>
-                        <ListItem>Dimple Pariyar</ListItem>
-                        <ListItem>Dipak Nepali</ListItem>
-                        <ListItem>Gautam Manisha</ListItem>
-                        <ListItem>Govind Ram Pariyar</ListItem>
-                        <ListItem>Indira Sunam Jay</ListItem>
-                        <ListItem>Kumar Pariyar</ListItem>
-                        <ListItem>Kaji Sunam</ListItem>
-                        <ListItem>Kamal Pariyar Babul</ListItem>
-                        <ListItem>Kanhaiya Singh Pariyar</ListItem>
-                        <ListItem>Karna Sunam Akela</ListItem>
-                        <ListItem>Kiran Pariyar</ListItem>
-                    </List>
+
+                    <TableContainer component={Paper}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Member Name</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {paginatedMembers.map((member, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell>{member}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                        <TablePagination
+                            rowsPerPageOptions={[5, 10, 25]}
+                            component="div"
+                            count={members.length}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        />
+                    </TableContainer>
                 </Box>
             </Box>
         </Box>
-
     );
 };
 
